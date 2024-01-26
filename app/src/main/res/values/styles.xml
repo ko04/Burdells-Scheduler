@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NavigationView">
+        <item name="fontFamily">@font/roboto_slab_bold</item>
+    </style>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.burdellsscheduler.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.burdellsscheduler.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.burdellsscheduler.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/myclasses"
+        android:name="com.example.burdellsscheduler.myclasses"
+        android:label="My classes"
+        tools:layout="@layout/fragment_myclasses" />
+    <fragment
+        android:id="@+id/myassignments"
+        android:name="com.example.burdellsscheduler.myassignments"
+        android:label="My assignments"
+        tools:layout="@layout/fragment_myassignments" />
+    <fragment
+        android:id="@+id/mytodos"
+        android:name="com.example.burdellsscheduler.mytodos"
+        android:label="My to do list"
+        tools:layout="@layout/fragment_mytodos" />
+    <fragment
+        android:id="@+id/myexams"
+        android:name="com.example.burdellsscheduler.myexams"
+        android:label="My exams"
+        tools:layout="@layout/fragment_myexams" />
+</navigation>

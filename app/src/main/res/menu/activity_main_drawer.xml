@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/myclasses"
+            android:icon="@drawable/classes"
+            android:title="Classes" />
+        <item
+            android:id="@+id/myassignments"
+            android:icon="@drawable/assignment"
+            android:title="Assignments" />
+        <item
+            android:id="@+id/myexams"
+            android:icon="@drawable/exam"
+            android:title="Exams" />
+        <item
+            android:id="@+id/mytodos"
+            android:icon="@drawable/todolist"
+            android:title="To-dos" />
+
+    </group>
+
+</menu>
+

@@ -1,0 +1,62 @@
+package com.example.burdellsscheduler;
+
+/**
+ * This class is used to simulate a class a student might add to their schedule.
+ * @author Tianyi Yu
+ */
+public class Classes {
+    private String instructor = "Prof. Feijoo";
+    private String location = "Howey L1";
+    private boolean[] day = {false, false, false, false, false};
+    private String time = "MW 8:00-9:15";
+    private String className = "CS2340 Objects and Design";
+    public Classes(String instructor, String location, String day, String time, String className) {
+        this.instructor = instructor;
+        this.location = location;
+        for (int i = 0; i < 5; i++) {
+            if (day.substring(i, i + 1).equals("1")) {
+                this.day[i] = true;
+            }
+        }
+        this.time = time;
+        this.className = className;
+    }
+    public String getClassName() {
+        return className;
+    }
+    public String getInstructor() {
+        return instructor;
+    }
+
+    public boolean[] getDay() {
+        return day;
+    }
+    public String getTime() {
+        return time;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public void setClassName(String className) {
+        if (className != null && className != "") {
+            this.className = className;
+        }
+    }
+    public void setInstructor(String instructor) {
+        if (instructor != null && instructor != "")
+        this.instructor = instructor;
+    }
+    public void setLocation(String location) {
+        if (location != null && location != "") this.location = location;
+    }
+
+    public void setDay(boolean[] day) {
+        for (int i = 0; i < 5; i++) {
+            this.day[i] = day[i];
+        }
+    }
+
+    public void setTime(String time) {
+        if (time != null && location != null) this.time = time;
+    }
+}
