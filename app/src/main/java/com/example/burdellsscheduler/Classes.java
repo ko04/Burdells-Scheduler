@@ -1,15 +1,17 @@
 package com.example.burdellsscheduler;
 
+import androidx.annotation.Nullable;
+
 /**
  * This class is used to simulate a class a student might add to their schedule.
  * @author Tianyi Yu
  */
 public class Classes {
-    private String instructor = "Prof. Feijoo";
-    private String location = "Howey L1";
+    private String instructor;
+    private String location;
     private boolean[] day = {false, false, false, false, false};
-    private String time = "MW 8:00-9:15";
-    private String className = "CS2340 Objects and Design";
+    private String time;
+    private String className;
     public Classes(String instructor, String location, String day, String time, String className) {
         this.instructor = instructor;
         this.location = location;
@@ -19,6 +21,9 @@ public class Classes {
             }
         }
         this.time = time;
+        this.className = className;
+    }
+    public Classes(String className) {
         this.className = className;
     }
     public String getClassName() {
@@ -54,6 +59,14 @@ public class Classes {
         for (int i = 0; i < 5; i++) {
             this.day[i] = day[i];
         }
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null || obj.getClass() != getClass()) {
+            return false;
+        }
+        return this.className == ((Classes) obj).getClassName();
     }
 
     public void setTime(String time) {
