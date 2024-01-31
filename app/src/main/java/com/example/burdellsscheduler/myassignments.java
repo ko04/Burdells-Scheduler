@@ -38,6 +38,7 @@ import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -53,7 +54,7 @@ public class myassignments extends Fragment {
 
 
     public myassignments() {
-        // Required empty public constructo
+        // Required empty public constructor
     }
     public static myclasses newInstance(String param1, String param2) {
         myclasses fragment = new myclasses();
@@ -207,6 +208,7 @@ public class myassignments extends Fragment {
 
                         mNewsList.add(new Assignments(name.getText().toString(), time, new Classes(associatedClass.getText().toString())));
                         mMyAdapter.notifyItemInserted(mMyAdapter.getItemCount());
+                        /* this is two ways to use the compare method we construdted to sort with bubble sort
                         if (getActivity().findViewById(R.id.radioButtonClass).isSelected()) {
                             for (int i = 1; i < mNewsList.size(); i++) {
                                 for (int j = 0; j < mNewsList.size() - i; j++) {
@@ -233,6 +235,31 @@ public class myassignments extends Fragment {
                                 }
 
                             }
+                            for (int i = 0; i < mNewsList.size(); i++) {
+                                mMyAdapter.notifyItemChanged(i);
+                            }
+                        }
+                        */
+                        //using comparator to do the sort
+                        if (getActivity().findViewById(R.id.radioButtonClass).isSelected()) {
+                            mNewsList.sort(new Comparator<Assignments>() {
+                                @Override
+                                public int compare(Assignments o1, Assignments o2) {
+                                    return o1.getAssociatedClass().getClassName().compareTo(o2.getAssociatedClass().getClassName());
+                                }
+                            });
+                            for (int i = 0; i < mNewsList.size(); i++) {
+                                mMyAdapter.notifyItemChanged(i);
+                            }
+                        }
+
+                        if (getActivity().findViewById(R.id.radioButtonDate).isSelected()) {
+                            mNewsList.sort(new Comparator<Assignments>() {
+                                @Override
+                                public int compare(Assignments o1, Assignments o2) {
+                                    return o1.getTime().compareTo(o2.getTime());
+                                }
+                            });
                             for (int i = 0; i < mNewsList.size(); i++) {
                                 mMyAdapter.notifyItemChanged(i);
                             }
@@ -440,6 +467,8 @@ public class myassignments extends Fragment {
                             news.setAssociatedClass(new Classes(associatedClass.getText().toString()));
                         }
                         mMyAdapter.notifyItemChanged(position);
+
+                        /*
                         if (getActivity().findViewById(R.id.radioButtonClass).isSelected()) {
                             for (int i = 1; i < mNewsList.size(); i++) {
                                 for (int j = 0; j < mNewsList.size() - i; j++) {
@@ -466,6 +495,30 @@ public class myassignments extends Fragment {
                                 }
 
                             }
+                            for (int i = 0; i < mNewsList.size(); i++) {
+                                mMyAdapter.notifyItemChanged(i);
+                            }
+                        }
+                        */
+                        if (getActivity().findViewById(R.id.radioButtonClass).isSelected()) {
+                            mNewsList.sort(new Comparator<Assignments>() {
+                                @Override
+                                public int compare(Assignments o1, Assignments o2) {
+                                    return o1.getAssociatedClass().getClassName().compareTo(o2.getAssociatedClass().getClassName());
+                                }
+                            });
+                            for (int i = 0; i < mNewsList.size(); i++) {
+                                mMyAdapter.notifyItemChanged(i);
+                            }
+                        }
+
+                        if (getActivity().findViewById(R.id.radioButtonDate).isSelected()) {
+                            mNewsList.sort(new Comparator<Assignments>() {
+                                @Override
+                                public int compare(Assignments o1, Assignments o2) {
+                                    return o1.getTime().compareTo(o2.getTime());
+                                }
+                            });
                             for (int i = 0; i < mNewsList.size(); i++) {
                                 mMyAdapter.notifyItemChanged(i);
                             }
