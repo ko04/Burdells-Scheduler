@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -214,7 +215,9 @@ public class myclasses extends Fragment {
                 ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
                 linearLayout.setPadding(64, 0, width - 964, 0);
-                alertDialog.setView(linearLayout);
+                ScrollView scrollView = new ScrollView(getContext());
+                scrollView.addView(linearLayout);
+                alertDialog.setView(scrollView);
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //do nothing
@@ -230,6 +233,7 @@ public class myclasses extends Fragment {
                 alertDialog.show();
                 alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.tech_gold));
                 alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.tech_gold));
+
             }
         });
     }
@@ -382,15 +386,15 @@ public class myclasses extends Fragment {
                     linearLayout.addView(instructor);
                     linearLayout.addView(checkBoxLayout);
                     linearLayout.addView(timePicker);
-//                    linearLayout.addView(time);
                     linearLayout.addView(location);
                     linearLayout.setOrientation(LinearLayout.VERTICAL);
                     DisplayMetrics displayMetrics = new DisplayMetrics();
                     ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-                    int height = displayMetrics.heightPixels;
                     int width = displayMetrics.widthPixels;
                     linearLayout.setPadding(64, 0, width - 964, 0);
-                    alertDialog.setView(linearLayout);
+                    ScrollView scrollView = new ScrollView(getContext());
+                    scrollView.addView(linearLayout);
+                    alertDialog.setView(scrollView);
                     alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             // do nothing

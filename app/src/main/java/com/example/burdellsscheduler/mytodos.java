@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -125,7 +126,9 @@ public class mytodos extends Fragment {
                 ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
                 linearLayout.setPadding(64, 0, width - 964, 0);
-                alertDialog.setView(linearLayout);
+                ScrollView scrollView = new ScrollView(getContext());
+                scrollView.addView(linearLayout);
+                alertDialog.setView(scrollView);
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //do nothing
@@ -192,7 +195,9 @@ public class mytodos extends Fragment {
                 ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
                 linearLayout.setPadding(64, 0, width - 964, 0);
-                alertDialog.setView(linearLayout);
+                ScrollView scrollView = new ScrollView(getContext());
+                scrollView.addView(linearLayout);
+                alertDialog.setView(scrollView);
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //do nothing
@@ -435,7 +440,9 @@ public class mytodos extends Fragment {
                     ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                     int width = displayMetrics.widthPixels;
                     linearLayout.setPadding(64, 0, width - 964, 0);
-                    alertDialog.setView(linearLayout);
+                    ScrollView scrollView = new ScrollView(getContext());
+                    scrollView.addView(linearLayout);
+                    alertDialog.setView(scrollView);
                     alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             //do nothing

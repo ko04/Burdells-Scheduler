@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.res.ColorStateList;
+import android.database.DataSetObserver;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,6 +23,8 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -38,6 +44,7 @@ import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -185,17 +192,88 @@ public class myassignments extends Fragment {
                         // handle the date change
                     }
                 });
+                dateView.setPadding(0,0,0,0);
+                timePickerView.setPadding(0,0,0,0);
                 EditText associatedClass = createEditText("Associated class");
                 linearLayout.addView(name);
                 linearLayout.addView(datePicker);
                 linearLayout.addView(timePicker);
                 linearLayout.addView(associatedClass);
+
+                LinearLayout linearLayout1 = new LinearLayout(getContext());
+                linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
+
+                CheckBox checkBox = new CheckBox(getContext());
+                checkBox.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.tech_gold)));
+                checkBox.setTypeface(Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf"));
+                checkBox.setChecked(false);
+
+                linearLayout1.addView(checkBox);
+
+                TextView textView1 = new TextView(getContext());
+                int[] notifyTime = new int[]{20};
+                textView1.setText(String.format("Notify me %d minutes before due time.", notifyTime[0]));
+                linearLayout1.addView(textView1);
+
+                Spinner spinner = new Spinner(getContext());
+                spinner.setLayoutMode(Spinner.MODE_DROPDOWN);
+                spinner.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.tech_gold)));
+
+
+                Integer[] timeOptions = new Integer[]{1, 5, 10, 15, 20, 30, 60, 120, 180, 240, 300, 360, 720, 1440};
+                ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(getContext(), android.R.layout.simple_spinner_item, timeOptions){
+
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View v = super.getView(position, convertView, parent);
+
+                        Typeface externalFont=Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");
+                        ((TextView) v).setTypeface(externalFont);
+
+                        return v;
+                    }
+
+
+                    public View getDropDownView(int position,  View convertView,  ViewGroup parent) {
+                        View v =super.getDropDownView(position, convertView, parent);
+
+                        Typeface externalFont=Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Light.ttf");
+                        ((TextView) v).setTypeface(externalFont);
+                        v.setBackgroundColor(getResources().getColor(R.color.tech_gold));
+
+                        return v;
+                    }
+                };
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+
+                spinner.setSelection(Arrays.asList(timeOptions).indexOf(10));
+
+
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        notifyTime[0] = (Integer) parent.getItemAtPosition(position);
+                        textView1.setText(String.format("Notify me %d minutes before due time.", notifyTime[0]));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        // Do nothing
+                    }
+                });
+
+                linearLayout1.addView(spinner);
+                linearLayout.addView(linearLayout1);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 DisplayMetrics displayMetrics = new DisplayMetrics();
                 ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
                 linearLayout.setPadding(64, 0, width - 964, 0);
-                alertDialog.setView(linearLayout);
+                ScrollView scrollView = new ScrollView(getContext());
+                scrollView.addView(linearLayout);
+                alertDialog.setView(scrollView);
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //do nothing
@@ -205,9 +283,16 @@ public class myassignments extends Fragment {
 
                     public void onClick(DialogInterface dialog, int which) {
                         LocalDateTime time = LocalDateTime.of(datePicker.getYear(), datePicker.getMonth() + 1, datePicker.getDayOfMonth(), timePicker.getHour(), timePicker.getMinute());
-
+                        int minuteOfDelay = notifyTime[0];
                         mNewsList.add(new Assignments(name.getText().toString(), time, new Classes(associatedClass.getText().toString())));
                         mMyAdapter.notifyItemInserted(mMyAdapter.getItemCount());
+                        if (checkBox.isChecked()) {
+                            List<Events> a = new ArrayList<>();
+                            for (int i = 0; i < mNewsList.size(); i++) {
+                                a.add(mNewsList.get(i));
+                            }
+                            NotificationScheduler.scheduleNotifications(getContext(), a, "Assignment coming: ", minuteOfDelay);
+                        }
                         /* this is two ways to use the compare method we construdted to sort with bubble sort
                         if (getActivity().findViewById(R.id.radioButtonClass).isSelected()) {
                             for (int i = 1; i < mNewsList.size(); i++) {
@@ -269,6 +354,7 @@ public class myassignments extends Fragment {
                 alertDialog.show();
                 alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.tech_gold));
                 alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.tech_gold));
+
             }
         });
         RadioButton sortByClass = getActivity().findViewById(R.id.radioButtonClass);
@@ -451,7 +537,9 @@ public class myassignments extends Fragment {
                 ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
                 linearLayout.setPadding(64, 0, width - 964, 0);
-                alertDialog.setView(linearLayout);
+                ScrollView scrollView = new ScrollView(getContext());
+                scrollView.addView(linearLayout);
+                alertDialog.setView(scrollView);
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //do nothing
