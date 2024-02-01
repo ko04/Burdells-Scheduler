@@ -25,11 +25,6 @@
             android:icon="@drawable/todolist"
             android:title="To-dos" />
 
-        <item
-            android:id="@+id/myCalendar"
-            android:icon="@drawable/icon_calendar"
-            android:title="Calendar"/>
-
     </group>
 
 </menu>
