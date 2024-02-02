@@ -264,7 +264,6 @@ public class myassignments extends Fragment {
 
                 linearLayout1.addView(spinner);
                 linearLayout.addView(linearLayout1);
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
 
                 linearLayout.setOrientation(LinearLayout.VERTICAL);
                 DisplayMetrics displayMetrics = new DisplayMetrics();
