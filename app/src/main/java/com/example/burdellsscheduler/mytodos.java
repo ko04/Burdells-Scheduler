@@ -33,6 +33,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.burdellsscheduler.ui.home.HomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
@@ -142,7 +143,8 @@ public class mytodos extends Fragment {
                 });
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        mNewsList.remove(viewHolder.getAdapterPosition());
+                        Events a = mNewsList.remove(viewHolder.getAdapterPosition());
+                        HomeFragment.allEvents.remove(a);
                         mMyAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                     }
                 });
@@ -276,8 +278,9 @@ public class mytodos extends Fragment {
 
                     public void onClick(DialogInterface dialog, int which) {
                         LocalDateTime time = LocalDateTime.of(datePicker.getYear(), datePicker.getMonth() + 1, datePicker.getDayOfMonth(), timePicker.getHour(), timePicker.getMinute());
-
+                        Todos addingNewTodo = new Todos(name.getText().toString(), time, new Classes(associatedClass.getText().toString()));
                         mNewsList.add(new Todos(name.getText().toString(), time, new Classes(associatedClass.getText().toString())));
+                        HomeFragment.allEvents.add(addingNewTodo);
                         mMyAdapter.notifyItemInserted(mMyAdapter.getItemCount());
                         if (checkBox.isChecked()) {
                             List<Events> a = new ArrayList<>();

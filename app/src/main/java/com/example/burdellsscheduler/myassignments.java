@@ -37,6 +37,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.burdellsscheduler.ui.home.HomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
@@ -145,7 +146,8 @@ public class myassignments extends Fragment {
                 });
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        mNewsList.remove(viewHolder.getAdapterPosition());
+                        Events a = mNewsList.remove(viewHolder.getAdapterPosition());
+                        HomeFragment.allEvents.remove(a);
                         mMyAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                     }
                 });
@@ -283,7 +285,10 @@ public class myassignments extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         LocalDateTime time = LocalDateTime.of(datePicker.getYear(), datePicker.getMonth() + 1, datePicker.getDayOfMonth(), timePicker.getHour(), timePicker.getMinute());
                         int minuteOfDelay = notifyTime[0];
-                        mNewsList.add(new Assignments(name.getText().toString(), time, new Classes(associatedClass.getText().toString())));
+                        Assignments addingNew = new Assignments(name.getText().toString(), time, new Classes(associatedClass.getText().toString()));
+                        mNewsList.add(addingNew);
+                        HomeFragment.allEvents.add(addingNew);
+
                         mMyAdapter.notifyItemInserted(mMyAdapter.getItemCount());
                         if (checkBox.isChecked()) {
                             List<Events> a = new ArrayList<>();
