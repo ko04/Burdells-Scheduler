@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendarConstrain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/calendar_date"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/prev_week_button"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/previous_week"
+        app:layout_constraintEnd_toStartOf="@+id/calendar_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/next_week_button"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/next_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calendar_date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mon_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="M"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <Button
+        android:id="@+id/tues_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="T"
+        app:layout_constraintStart_toEndOf="@+id/mon_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <Button
+        android:id="@+id/wed_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:text="W"
+        app:layout_constraintStart_toEndOf="@+id/tues_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <Button
+        android:id="@+id/thu_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="R"
+        app:layout_constraintStart_toEndOf="@+id/wed_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <Button
+        android:id="@+id/fri_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="F"
+        app:layout_constraintStart_toEndOf="@+id/thu_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <Button
+        android:id="@+id/sat_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="S"
+        app:layout_constraintStart_toEndOf="@+id/fri_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <Button
+        android:id="@+id/sun_button"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="N"
+        app:layout_constraintStart_toEndOf="@+id/sat_button"
+        app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendar_event_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thu_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

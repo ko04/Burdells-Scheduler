@@ -14,4 +14,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back"><![CDATA[<-]]></string>
     <string name="forward"><![CDATA[->]]></string>
+    <string name="previous_week">previous week</string>
+    <string name="next_week">next week</string>
 </resources>

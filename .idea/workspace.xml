@@ -5,12 +5,77 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/app_bar_main.xml">
         <config>
           <theme>@style/Theme.BurdellsScheduler.NoActionBar</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/calendar_layout.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/date_picker.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/event_calendar.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_gallery.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_myclasses.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_myexams.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_mytodos.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler.NoActionBar</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_slideshow.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_mylist.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/list_assignments.xml">
+        <config>
+          <theme>@style/Theme.BurdellsScheduler</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/list_todos.xml">
         <config>
           <theme>@style/Theme.BurdellsScheduler</theme>
         </config>
@@ -40,7 +105,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ko04\AppData\Local\Android\Sdk\.android\avd\Pixel_2_API_34.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ko04\AppData\Local\Android\Sdk\.android\avd\Pixel_7_Pro_API_34.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -72,6 +137,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "android-custom-viewC:/Users/ko04/AppData/Local/Android/Sdk/sources/android-34/android/widget/AdapterView.java_SELECTED": "AdapterView",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "ignore.virus.scanning.warn.message": "true",
