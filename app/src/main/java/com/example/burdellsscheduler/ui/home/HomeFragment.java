@@ -284,10 +284,10 @@
                 if (events.getClass() == Assignments.class)
                 holder.calendar_event_class.setText("Associated class: " + ((Assignments) events).getAssociatedClass().getClassName());
                 if (events.getClass() == Exams.class) {
-                    holder.calendar_event_class.setText("Associated class: " + ((Exams) events).getAssociatedClass().getClassName());
+                    holder.calendar_event_class.setText("Location: " + ((Exams) events).getAssociatedClass().getClassName());
                 }
                 if (events.getClass() == Todos.class) {
-                    holder.calendar_event_class.setText("Associated class: " + ((Todos) events).getAssociatedClass().getClassName());
+                    holder.calendar_event_class.setText("Details: " + ((Todos) events).getAssociatedClass().getClassName());
                 }
             }
         }

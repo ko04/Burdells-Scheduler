@@ -168,7 +168,7 @@ public class myexams extends Fragment {
                 textView.setPadding(64, 64, 0, 32);
                 textView.setTextColor(getResources().getColor(R.color.tech_gold));
                 alertDialog.setCustomTitle(textView);
-                alertDialog.setMessage("Please enter your title, due date, due time, and associated class below.");
+                alertDialog.setMessage("Please enter your title, due date, due time, and location below.");
                 LinearLayout linearLayout = new LinearLayout(getContext());
                 EditText name = createEditText("Title");
 
@@ -191,11 +191,11 @@ public class myexams extends Fragment {
                         // handle the date change
                     }
                 });
-                EditText associatedClass = createEditText("Associated class");
+                EditText location = createEditText("Location");
                 linearLayout.addView(name);
                 linearLayout.addView(datePicker);
                 linearLayout.addView(timePicker);
-                linearLayout.addView(associatedClass);
+                linearLayout.addView(location);
 
                 LinearLayout linearLayout1 = new LinearLayout(getContext());
                 linearLayout1.setOrientation(LinearLayout.HORIZONTAL);
@@ -278,7 +278,7 @@ public class myexams extends Fragment {
 
                     public void onClick(DialogInterface dialog, int which) {
                         LocalDateTime time = LocalDateTime.of(datePicker.getYear(), datePicker.getMonth() + 1, datePicker.getDayOfMonth(), timePicker.getHour(), timePicker.getMinute());
-                        Exams addingNewExam = new Exams(name.getText().toString(), time, new Classes(associatedClass.getText().toString()));
+                        Exams addingNewExam = new Exams(name.getText().toString(), time, new Classes(location.getText().toString()));
                         mNewsList.add(addingNewExam);
                         HomeFragment.allEvents.add(addingNewExam);
                         mMyAdapter.notifyItemInserted(mMyAdapter.getItemCount());
@@ -473,7 +473,7 @@ public class myexams extends Fragment {
             holder.mTitleContent.setText("Due Date: " + news.getTime().getMonth().toString().substring(0,1) + news.getTime().getMonth().toString().substring(1).toLowerCase() + " " + news.getTime().getDayOfMonth() + " "+ news.getTime().getYear());
 
             holder.m2.setText("Due Time: " + addZero(news.getTime().getHour())+":" + addZero(news.getTime().getMinute()));
-            holder.m3.setText("Associated Class: " + news.getAssociatedClass().getClassName());
+            holder.m3.setText("Location: " + news.getAssociatedClass().getClassName());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -486,7 +486,7 @@ public class myexams extends Fragment {
                     textView.setPadding(64, 64, 0, 32);
                     textView.setTextColor(getResources().getColor(R.color.tech_gold));
                     alertDialog.setCustomTitle(textView);
-                    alertDialog.setMessage("Please enter your title, due date, due time, and associated class below.");
+                    alertDialog.setMessage("Please enter your title, due date, due time, and location below.");
                     LinearLayout linearLayout = new LinearLayout(getContext());
                     EditText name = createEditText(news.getLabel());
 

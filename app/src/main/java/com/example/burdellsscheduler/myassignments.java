@@ -271,8 +271,9 @@ public class myassignments extends Fragment {
                 DisplayMetrics displayMetrics = new DisplayMetrics();
                 ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
                 int width = displayMetrics.widthPixels;
-                linearLayout.setPadding(64, 0, width - 964, 0);
+                int height = displayMetrics.heightPixels;
                 ScrollView scrollView = new ScrollView(getContext());
+                linearLayout.setPadding(64, 0, width - 964, 100);
                 scrollView.addView(linearLayout);
                 alertDialog.setView(scrollView);
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {

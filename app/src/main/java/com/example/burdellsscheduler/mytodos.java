@@ -168,7 +168,7 @@ public class mytodos extends Fragment {
                 textView.setPadding(64, 64, 0, 32);
                 textView.setTextColor(getResources().getColor(R.color.tech_gold));
                 alertDialog.setCustomTitle(textView);
-                alertDialog.setMessage("Please enter your title, due date, due time, and associated class below.");
+                alertDialog.setMessage("Please enter your title, due date, due time, and details below.");
                 LinearLayout linearLayout = new LinearLayout(getContext());
                 EditText name = createEditText("Title");
 
@@ -191,7 +191,7 @@ public class mytodos extends Fragment {
                         // handle the date change
                     }
                 });
-                EditText associatedClass = createEditText("Associated class");
+                EditText associatedClass = createEditText("Details");
                 linearLayout.addView(name);
                 linearLayout.addView(datePicker);
                 linearLayout.addView(timePicker);
@@ -473,7 +473,7 @@ public class mytodos extends Fragment {
             holder.mTitleContent.setText("Due Date: " + news.getTime().getMonth().toString().substring(0,1) + news.getTime().getMonth().toString().substring(1).toLowerCase() + " " + news.getTime().getDayOfMonth() + " "+ news.getTime().getYear());
 
             holder.m2.setText("Due Time: " + addZero(news.getTime().getHour())+":" + addZero(news.getTime().getMinute()));
-            holder.m3.setText("Associated Class: " + news.getAssociatedClass().getClassName());
+            holder.m3.setText("Details: " + news.getAssociatedClass().getClassName());
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -486,7 +486,7 @@ public class mytodos extends Fragment {
                     textView.setPadding(64, 64, 0, 32);
                     textView.setTextColor(getResources().getColor(R.color.tech_gold));
                     alertDialog.setCustomTitle(textView);
-                    alertDialog.setMessage("Please enter your title, due date, due time, and associated class below.");
+                    alertDialog.setMessage("Please enter your title, due date, due time, and details below.");
                     LinearLayout linearLayout = new LinearLayout(getContext());
                     EditText name = createEditText(news.getLabel());
 
