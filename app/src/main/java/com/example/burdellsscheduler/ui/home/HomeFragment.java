@@ -49,6 +49,7 @@
             super.onCreate(savedInstanceState);
             if (savedInstanceState != null) {
                 calendar_events = (ArrayList<Events>) savedInstanceState.getSerializable("MyCalendarEvents");
+                allEvents = (ArrayList<Events>) savedInstanceState.getSerializable("AllEvents");
             }
         }
 
@@ -56,6 +57,7 @@
         public void onSaveInstanceState(@NonNull Bundle outState) {
             super.onSaveInstanceState(outState);
             outState.putSerializable("MyCalendarEvents", (Serializable) calendar_events);
+            outState.putSerializable("AllEvents",(Serializable) allEvents);
         }
 
         public View onCreateView(@NonNull LayoutInflater inflater,
@@ -277,8 +279,8 @@
             public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
                 Events events = calendar_events.get(position);
                 holder.calendar_event_title.setText("Title: " + events.getLabel());
-                holder.calendar_event_date.setText("Date: " + events.getTime().getMonthValue() + "-" + events.getTime().getDayOfMonth());
-                holder.calendar_event_time.setText("Times: " + events.getTime().getHour() + ":" + events.getTime().getMinute());
+                holder.calendar_event_date.setText("Date: " + events.getTime().getMonth() + "-" + events.getTime().getDayOfMonth());
+                holder.calendar_event_time.setText("Times: " + formalizeTime(events));
                 if (events.getClass() == Assignments.class)
                 holder.calendar_event_class.setText("Associated class: " + ((Assignments) events).getAssociatedClass().getClassName());
                 if (events.getClass() == Exams.class) {
@@ -290,6 +292,9 @@
             }
         }
 
+        private String formalizeTime(Events events) {
+            return String.format("%02d:%02d",events.getTime().getHour(),events.getTime().getMinute());
+        }
         class CalendarViewHolder extends RecyclerView.ViewHolder {
             TextView calendar_event_title;
             TextView calendar_event_date;
