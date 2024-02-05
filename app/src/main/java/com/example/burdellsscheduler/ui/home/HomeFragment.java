@@ -2,6 +2,7 @@
 
     import android.content.res.ColorStateList;
     import android.os.Bundle;
+    import android.util.DisplayMetrics;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
@@ -101,6 +102,10 @@
             Button fri_button = view.findViewById(R.id.fri_button);
             Button sat_button = view.findViewById(R.id.sat_button);
             Button sun_button = view.findViewById(R.id.sun_button);
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            int screen_width = displayMetrics.widthPixels;
+            mon_button.setPadding(24, 0,0,0);
+            sun_button.setPadding(0,0,screen_width - 24,0);
             ArrayList<Button> arr = new ArrayList<>();
             arr.add(mon_button);
             arr.add(tues_button);
