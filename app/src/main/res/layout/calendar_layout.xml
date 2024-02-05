@@ -11,103 +11,127 @@
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginTop="80dp"
+        android:fontFamily="@font/roboto_slab_bold"
         android:text="TextView"
         android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/prev_week_button"
+        style="@style/NavigationView"
         android:layout_width="110dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="@string/previous_week"
+        android:textSize="13sp"
         app:layout_constraintEnd_toStartOf="@+id/calendar_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/next_week_button"
+        style="@style/NavigationView"
         android:layout_width="110dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="@string/next_week"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calendar_date"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/mon_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="M"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 
     <Button
         android:id="@+id/tues_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="T"
         app:layout_constraintStart_toEndOf="@+id/mon_button"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 
     <Button
         android:id="@+id/wed_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="W"
         app:layout_constraintStart_toEndOf="@+id/tues_button"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 
     <Button
         android:id="@+id/thu_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="R"
         app:layout_constraintStart_toEndOf="@+id/wed_button"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 
     <Button
         android:id="@+id/fri_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="F"
         app:layout_constraintStart_toEndOf="@+id/thu_button"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 
     <Button
         android:id="@+id/sat_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="S"
         app:layout_constraintStart_toEndOf="@+id/fri_button"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 
     <Button
         android:id="@+id/sun_button"
+        style="@style/NavigationView"
         android:layout_width="45dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/dark_tech_gold"
         android:text="N"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sat_button"
         app:layout_constraintTop_toBottomOf="@+id/prev_week_button" />
 

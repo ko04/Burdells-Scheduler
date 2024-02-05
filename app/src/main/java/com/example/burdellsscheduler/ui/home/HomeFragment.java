@@ -1,5 +1,6 @@
     package com.example.burdellsscheduler.ui.home;
 
+    import android.content.res.ColorStateList;
     import android.os.Bundle;
     import android.view.LayoutInflater;
     import android.view.View;
@@ -21,6 +22,7 @@
     import com.example.burdellsscheduler.Assignments;
     import com.example.burdellsscheduler.Classes;
     import com.example.burdellsscheduler.Events;
+    import com.example.burdellsscheduler.Exams;
     import com.example.burdellsscheduler.R;
     import com.example.burdellsscheduler.Todos;
     import com.example.burdellsscheduler.databinding.FragmentHomeBinding;
@@ -97,32 +99,48 @@
             Button fri_button = view.findViewById(R.id.fri_button);
             Button sat_button = view.findViewById(R.id.sat_button);
             Button sun_button = view.findViewById(R.id.sun_button);
-            DayOfWeek today = date.getDayOfWeek();
-            //setting the color of the chose button to be background in gold color
-            switch (today) {
-                case MONDAY:
-                    mon_button.setBackgroundColor(getResources().getColor(R.color.tech_gold));
+            ArrayList<Button> arr = new ArrayList<>();
+            arr.add(mon_button);
+            arr.add(tues_button);
+            arr.add(wed_button);
+            arr.add(thur_button);
+            arr.add(fri_button);
+            arr.add(sat_button);
+            arr.add(sun_button);
+            switch (date.getDayOfWeek()) {
+                case MONDAY: {
+                    setTint(mon_button, arr);
                     break;
-
-                case TUESDAY:
-                    tues_button.setBackgroundColor(getResources().getColor(R.color.tech_gold));
+                }
+                case TUESDAY: {
+                    setTint(tues_button, arr);
                     break;
-
-                case WEDNESDAY:
-                    wed_button.setBackgroundColor(getResources().getColor(R.color.tech_gold));
+                }
+                case WEDNESDAY: {
+                    setTint(wed_button, arr);
                     break;
-
-                case THURSDAY:
-                    thur_button.setBackgroundColor(getResources().getColor(R.color.tech_gold));
+                }
+                case THURSDAY: {
+                    setTint(thur_button, arr);
                     break;
-
-                case FRIDAY:
-                    fri_button.setBackgroundColor(getResources().getColor(R.color.tech_gold));
+                }
+                case FRIDAY: {
+                    setTint(fri_button, arr);
                     break;
+                }
+                case SATURDAY: {
+                    setTint(sat_button, arr);
+                    break;
+                }
+                case SUNDAY: {
+                    setTint(sun_button, arr);
+                    break;
+                }
             }
             prev_week_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     date = date.minusWeeks(1);
                    renewTime(date_represent);
                    changingDateInList(calendarAdapter);
@@ -139,6 +157,7 @@
             mon_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(mon_button, arr);
                     setDayOfWeek(DayOfWeek.MONDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
@@ -147,6 +166,7 @@
             tues_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(tues_button,arr);
                     setDayOfWeek(DayOfWeek.TUESDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
@@ -155,6 +175,7 @@
             wed_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(wed_button,arr);
                     setDayOfWeek(DayOfWeek.WEDNESDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
@@ -163,6 +184,7 @@
             thur_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(thur_button,arr);
                     setDayOfWeek(DayOfWeek.THURSDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
@@ -171,6 +193,7 @@
             fri_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(fri_button,arr);
                     setDayOfWeek(DayOfWeek.FRIDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
@@ -179,6 +202,7 @@
             sat_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(sat_button,arr);
                     setDayOfWeek(DayOfWeek.SATURDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
@@ -187,11 +211,21 @@
             sun_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setTint(sun_button,arr);
                     setDayOfWeek(DayOfWeek.SUNDAY);
                     renewTime(date_represent);
                     changingDateInList(calendarAdapter);
                 }
             });
+
+        }
+        private void setTint(Button button, ArrayList<Button> arr) {
+            ColorStateList colorStateList = ColorStateList.valueOf(getResources().getColor(R.color.tech_gold));
+            ColorStateList colorStateList2 = ColorStateList.valueOf(getResources().getColor(R.color.light_tech_gold));
+            for (int i = 0; i < arr.size(); i++) {
+                arr.get(i).setBackgroundTintList(colorStateList);
+            }
+            button.setBackgroundTintList(colorStateList2);
         }
 
         private void renewTime(TextView date_represent) {
@@ -245,7 +279,14 @@
                 holder.calendar_event_title.setText("Title: " + events.getLabel());
                 holder.calendar_event_date.setText("Date: " + events.getTime().getMonthValue() + "-" + events.getTime().getDayOfMonth());
                 holder.calendar_event_time.setText("Times: " + events.getTime().getHour() + ":" + events.getTime().getMinute());
-                holder.calendar_event_class.setText("Associated class: " + events.getClass().getName());
+                if (events.getClass() == Assignments.class)
+                holder.calendar_event_class.setText("Associated class: " + ((Assignments) events).getAssociatedClass().getClassName());
+                if (events.getClass() == Exams.class) {
+                    holder.calendar_event_class.setText("Associated class: " + ((Exams) events).getAssociatedClass().getClassName());
+                }
+                if (events.getClass() == Todos.class) {
+                    holder.calendar_event_class.setText("Associated class: " + ((Todos) events).getAssociatedClass().getClassName());
+                }
             }
         }
 
